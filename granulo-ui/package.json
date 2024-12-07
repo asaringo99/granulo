@@ -1,0 +1,26 @@
+{
+  "name": "granulo-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5.0.1",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/node": "^22.10.1",
+    "svelte": "^5.8.1",
+    "svelte-check": "^4.1.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.1"
+  },
+  "dependencies": {
+    "rollup": "^4.28.1",
+    "svelte-preprocess": "^6.0.3"
+  }
+}
