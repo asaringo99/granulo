@@ -1,0 +1,17 @@
+{
+  "name": "granulo-mps",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "granulo_mps_bg.wasm",
+    "granulo_mps.js",
+    "granulo_mps_bg.js",
+    "granulo_mps.d.ts"
+  ],
+  "main": "granulo_mps.js",
+  "types": "granulo_mps.d.ts",
+  "sideEffects": [
+    "./granulo_mps.js",
+    "./snippets/*"
+  ]
+}
