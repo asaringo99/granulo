@@ -13,6 +13,16 @@ export function add(left, right) {
     return ret >>> 0;
 }
 
+/**
+ * @param {number} left
+ * @param {number} right
+ * @returns {number}
+ */
+export function times(left, right) {
+    const ret = wasm.times(left, right);
+    return ret >>> 0;
+}
+
 export function __wbindgen_init_externref_table() {
     const table = wasm.__wbindgen_export_0;
     const offset = table.grow(4);
