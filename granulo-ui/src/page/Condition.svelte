@@ -5,7 +5,7 @@
 
 <div class="flex justify-center w-full">
     <div class="flex-col text-center w-2/3 items-center">
-        simulation
+        Condition
         <div class="flex justify-center">
             <ShapeCheckbox />
         </div>
