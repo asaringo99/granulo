@@ -4,29 +4,28 @@
     import Particle from "./Particle/Particle.svelte";
     import Solid from "./Solid/Solid.svelte";
 
-    let setting = $state("particle");
+    let {setting, name} = $props()
     const items: RadioItemType[] = [
         {
-            id: "particle",
+            id: `particle-${name}`,
             label: "Particle",
             value: "particle",
             component: Particle,
         },
         {
-            id: "force",
+            id: `force-${name}`,
             label: "Force",
             value: "force",
             component: Force,
         },
         {
-            id: "solid",
+            id: `solid-${name}`,
             label: "Solid",
             value: "solid",
             component: Solid,
         },
     ]
     const label = "Setting"
-    const name = "setting"
     const onclick = (e: any) => {
         setting = e.target.value;
     }

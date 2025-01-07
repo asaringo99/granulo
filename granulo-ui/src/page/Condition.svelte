@@ -1,16 +1,7 @@
 <script lang="ts">
-    import SettingCheckbox from "../features/Simulation/Setting/SettingCheckbox.svelte";
-    import ShapeCheckbox from "../features/Simulation/Shape/ShapeCheckbox.svelte";
+    import ConditionComponent from "../features/Simulation/ConditionComponent.svelte";
 </script>
 
 <div class="flex justify-center w-full">
-    <div class="flex-col text-center w-2/3 items-center">
-        Condition
-        <div class="flex justify-center">
-            <ShapeCheckbox />
-        </div>
-        <div class="flex justify-center">
-            <SettingCheckbox />
-        </div>
-    </div>
+    <ConditionComponent />
 </div>

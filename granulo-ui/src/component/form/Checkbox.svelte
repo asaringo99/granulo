@@ -7,7 +7,7 @@
     let selectedId = $state(0);
 </script>
 
-<fieldset class="w-full rounded border border-black p-4 flex justify-center">
+<fieldset class="w-full rounded p-4 flex justify-center">
     <legend class="text-center">{label}</legend>
     <div class="flex">
         {#each items as item, i}
