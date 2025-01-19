@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ConditionComponent from "../features/Simulation/ConditionComponent.svelte";
+    import ConditionComponent from "../features/Condition/ConditionComponent.svelte";
 </script>
 
 <div class="flex justify-center w-full">
