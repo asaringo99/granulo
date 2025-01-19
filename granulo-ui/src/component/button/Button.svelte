@@ -27,7 +27,7 @@
 
 <button
     {onclick}
-    class="{sizeClass} {colorClass} border-black border rounded-xl transition duration-300 drop-shadow-sm shadow-sm shadow-slate-300 ring-1"
+    class="{sizeClass} {colorClass} w-full border-black border rounded-xl transition duration-300 drop-shadow-sm shadow-sm shadow-slate-300 ring-1"
 >
     {label}
 </button>

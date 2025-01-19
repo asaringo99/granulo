@@ -1,14 +1,14 @@
 declare type RadioItemType = {
     id: string,
     label: string,
-    value?: string,
+    value: string,
     component?: Component
 }
 
 declare type RadioType = {
-    label: string,
     name: string,
     items: RadioItemType[],
+    selected: string
     hidden?: boolean,
     onclick?: (e: any) => void,
 }

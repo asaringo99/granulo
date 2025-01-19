@@ -1,9 +1,10 @@
 <script lang="ts">
-    import Checkbox from "../../../component/form/Checkbox.svelte";
+    import Checkbox from "../../../../component/form/Checkbox.svelte";
+  import Pulldown from "../../../../component/pulldown/Pulldown.svelte";
     import Circle from "./Circle/Circle.svelte";
     import Rectangle from "./Rectangle/Rectangle.svelte";
 
-    let {setting, name} = $props();
+    let {name, selected, oncheck} = $props();
     const items: RadioItemType[] = [
         {
             id: `circle-${name}`,
@@ -20,14 +21,16 @@
     ]
     const label = "Shape"
     const onclick = (e: any) => {
-        setting = e.target.value;
+        oncheck(e.target.value);
     }
 </script>
 
 <div class="flex justify-center w-full">
     <div class="flex-col text-center w-2/3 items-center">
-        <div class="flex justify-center">
-            <Checkbox {label} {name} {items} {onclick} />
-        </div>
+        <Pulldown label={label}>
+            <div slot="children" class="flex justify-center">
+                <Checkbox {name} {items} {selected} {onclick} />
+            </div>
+        </Pulldown>
     </div>
 </div>
