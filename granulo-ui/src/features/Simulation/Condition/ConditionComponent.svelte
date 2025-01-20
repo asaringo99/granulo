@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <hr class="w-10/12 border-black p-8">
+        <hr class=" w-11/12 border-black p-4">
     {/each}
     <div class="w-10/12">
         <Button {onclick} label="+" />
