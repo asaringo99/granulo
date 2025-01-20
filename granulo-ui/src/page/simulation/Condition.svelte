@@ -4,7 +4,7 @@
 </script>
 
 <Layout>
-    <div slot="children" class="flex justify-center w-full">
+    <div slot="children" class="flex justify-center w-full h-full">
         <ConditionComponent />
     </div>
 </Layout>
