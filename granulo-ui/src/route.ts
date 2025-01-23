@@ -5,11 +5,11 @@ export const routes = {
 	},
 	home: {
 		top: {
-			screenId: "B_0001",
+			screenId: "H_0001",
 			url: () => "/home/top",
 		},
 		about: {
-			screenId: "B_0002",
+			screenId: "H_0002",
 			url: () => "/home/about",
 		},
 	},
@@ -26,9 +26,17 @@ export const routes = {
 	simulation: {
 		condition: {
 			setting: {
-				screenId: "C_0001",
+				screenId: "S_0001",
 				url: () => "/simulation/condition/setting",
 			},
+		},
+		execute: {
+			screenId: "S_0002",
+			url: () => "/simulation/execute",
+		},
+		view: {
+			screenId: "S_0003",
+			url: () => "/simulation/view",
 		},
 	}
 }

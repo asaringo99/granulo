@@ -1,13 +1,11 @@
 <script lang="ts">
     let {
         onclick,
-        label,
         size='medium',
         color='primary',
         shape='rectangle',
     }: {
         onclick: () => void,
-        label: string,
         size?: 'small' | 'medium' | 'large',
         color?: 'primary' | 'secondary' | 'alert',
         shape?: 'circle' | 'rectangle',
@@ -22,7 +20,7 @@
     const colorClass = {
         'primary': 'bg-blue-400 hover:bg-blue-500 hover:text-gray-50',
         'secondary': 'bg-gray-200 hover:bg-gray-600 hover:text-gray-50',
-        'alert': 'bg-red-400 hover:bg-red-600 hover:text-gray-50 text-white'
+        'alert': 'bg-red-400 hover:bg-red-600 hover:text-gray-50'
     }[color]
 
     const shapeClass = {
@@ -37,6 +35,6 @@
         class="flex justify-center items-center w-full h-full transition duration-300 drop-shadow-sm shadow-sm shadow-slate-300 {sizeClass} {colorClass} {shapeClass}"
         {onclick}
     >
-        {label}
+        <slot name="children"></slot>
     </button>
 </div>

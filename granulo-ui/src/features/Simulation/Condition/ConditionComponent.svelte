@@ -3,6 +3,8 @@
     import Button from "../../../component/button/Button.svelte";
     import ActionCheckbox from "./Action/Action.svelte";
     import ShapeCheckbox from "./Shape/ShapeCheckbox.svelte";
+    import AddIcon from '../../../component/icon/AddIcon.svelte';
+    import DeleteIcon from '../../../component/icon/DeleteIcon.svelte';
     type Setting = {
         id: string,
         shape: 'circle' | 'rectangle',
@@ -51,13 +53,19 @@
                     />
                 </div>
             </div>
-            <div class="w-12 p-12">
-                <Button onclick={() => onclickDelete(i)} shape="circle" color="alert" label="-"/>
-            </div>
+            <Button onclick={() => onclickDelete(i)} shape="circle" color="alert" size='small'>
+                <div slot="children">
+                    <DeleteIcon height="24px" width="24px"/>
+                </div>
+            </Button>
         </div>
         <hr class=" w-11/12 border-black p-4">
     {/each}
     <div class="w-10/12">
-        <Button {onclick} label="+" />
+        <Button {onclick}>
+            <div slot="children">
+                <AddIcon height="24px" width="24px"/>
+            </div>
+        </Button>
     </div>
 </div>
