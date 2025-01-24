@@ -12,3 +12,8 @@ declare type RadioType = {
     hidden?: boolean,
     onclick?: (e: any) => void,
 }
+
+declare type TabType = {
+    label: string,
+    component: Component,
+}
