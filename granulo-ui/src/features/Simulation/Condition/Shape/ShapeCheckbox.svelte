@@ -1,8 +1,8 @@
 <script lang="ts">
     import Checkbox from "../../../../component/form/Checkbox.svelte";
-  import Pulldown from "../../../../component/pulldown/Pulldown.svelte";
-    import Circle from "./Circle/Circle.svelte";
-    import Rectangle from "./Rectangle/Rectangle.svelte";
+    import Pulldown from "../../../../component/pulldown/Pulldown.svelte";
+    import Circle from "../../../../component/contents/Circle/Circle.svelte";
+    import Rectangle from "../../../../component/contents/Rectangle/Rectangle.svelte";
 
     let {name, selected, oncheck} = $props();
     const items: RadioItemType[] = [
