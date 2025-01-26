@@ -1,4 +1,18 @@
-declare type SettingStatus = 'step1' | 'step2' | 'step3' | 'step4' | 'step5' | 'complete';
+declare type SettingStatus = 
+	'step1' |
+	'force-step2' |
+	'force-step3' |
+	'force-step4' |
+	'force-step5' |
+	'particle-step2' |
+	'particle-step3' |
+	'particle-step4' |
+	'particle-step5' |
+	'solid-step2' |
+	'solid-step3' |
+	'solid-step4' |
+	'solid-step5' |
+	'complete';
 
 declare type ActionSetting = (
 	ForceSetting |
@@ -6,7 +20,10 @@ declare type ActionSetting = (
 	SolidSetting
 ) & {
 	type: ActionType
-	status: SettingStatus
+	status: {
+		now: SettingStatus,
+		progress: SettingStatus,
+	}
 };
 
 declare type ForceSetting = {

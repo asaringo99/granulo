@@ -1,10 +1,10 @@
 <script lang="ts">
     import { v4 as uuidv4 } from 'uuid';
     import Button from "../../../component/button/Button.svelte";
-    import ActionCheckbox from "./Action/Action.svelte";
-    import ShapeCheckbox from "./Shape/ShapeCheckbox.svelte";
     import AddIcon from '../../../component/icon/AddIcon.svelte';
     import DeleteIcon from '../../../component/icon/DeleteIcon.svelte';
+    import ShapeCheckbox from '../../../component/ShapeCheckbox.svelte';
+    import ActionCheckbox from '../../../component/ActionCheckbox.svelte';
     type Setting = {
         id: string,
         shape: 'circle' | 'rectangle',

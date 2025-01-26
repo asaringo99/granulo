@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Layout from "../../features/Layout.svelte";
-  import Execute from "../../features/Simulation/Execute/Execute.svelte";
+  import Execute from "../../features/simulation/execute/Execute.svelte";
   import { particleAction } from "./particle.ex";
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { stepId, progressId, steps, noShow, onclick = () => {} }: { stepId: number, progressId: number, steps: string[], noShow?: boolean, onclick?: (e: any) => void } = $props();
-	let ratio = $derived(100 / (steps.length - 1));
+	let achieveRatio = $derived(progressId * 100 / (steps.length - 1));
 </script>
 
 <div class="w-full">
@@ -9,14 +9,19 @@
 			<div
 				class="w-full flex items-center justify-between absolute"
 			>
+				<div
+					style="width: {100}%"
+					class="border-blue-200 border-4 rounded-2xl absolute z-10"
+				></div>
+				<div
+					style="width: {achieveRatio}%"
+					class="border-blue-600 border-4 rounded-2xl absolute z-10"
+				></div>
 				{#each steps as step, i}
-					{#if i !== 0}
-						<div
-							style="width: {ratio}%"
-							class="{i <= progressId ? 'border-blue-500' : 'border-blue-100'} border-4"
-						>
+					{#if i === steps.length - 1 && noShow}
+						<div class="">
 						</div>
-					{/if}
+					{:else}
 						<button
 							type="button"
 							aria-label="{step}-{i}"
@@ -26,10 +31,11 @@
 									? "w-16 h-16 bg-indigo-600 border border-indigo-800"
 								: i <= progressId 
 										? "h-8 w-8 bg-indigo-600 border border-indigo-800"
-										: "h-8 w-8 bg-indigo-200 border border-indigo-300"
+										: "h-8 w-8 bg-indigo-300 border border-indigo-400"
 							}"
 							{onclick}
 						></button>
+					{/if}
 				{/each}
 			</div>
 		</div>

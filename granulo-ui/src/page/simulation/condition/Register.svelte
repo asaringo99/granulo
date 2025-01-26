@@ -1,6 +1,7 @@
 <script lang="ts">
-    import Layout from "../../features/Layout.svelte";
-    import Condition from "../../features/Simulation/Condition/Condition.svelte";
+    import Layout from "../../../features/Layout.svelte";
+    import Condition from "../../../features/simulation/condition/register/Condition.svelte";
+
     let { params } = $props();
 </script>
 

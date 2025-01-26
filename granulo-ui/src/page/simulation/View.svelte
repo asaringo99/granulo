@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Layout from "../../features/Layout.svelte";
-  import View from "../../features/Simulation/View/View.svelte";
+  import View from "../../features/simulation/view/View.svelte";
   import { particleArtifact } from "./particle.ex";
 </script>
 

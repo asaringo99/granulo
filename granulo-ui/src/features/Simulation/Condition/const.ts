@@ -36,19 +36,28 @@ export function shallowMerge<T extends object, U extends object>(x: T, y: U): T 
 
 type P<T extends string, K> = { [key in T]: K }
 
-const particleTp: {type: ActionType, status: SettingStatus} = {
+const particleTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
 	type: "particle",
-	status: "step2",
+	status: {
+		now: "particle-step2",
+		progress: "particle-step2",
+	}
 }
 
-const forceTp: {type: ActionType, status: SettingStatus} = {
+const forceTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
 	type: "force",
-	status: "step2",
+	status: {
+		now: "force-step2",
+		progress: "force-step2",
+	}
 }
 
-const solidTp: {type: ActionType, status: SettingStatus} = {
+const solidTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
 	type: "solid",
-	status: "step2",
+	status: {
+		now: "solid-step2",
+		progress: "solid-step2",
+	}
 }
 
 export const defaulActiontValue: P<ActionType, ActionSetting> = {
@@ -56,3 +65,16 @@ export const defaulActiontValue: P<ActionType, ActionSetting> = {
 	force: shallowMerge(forceSetitngDefault, forceTp),
 	solid: shallowMerge(solidSettingDefault, solidTp),
 }
+
+export const actionSteps: P<ActionType | "default", SettingStatus[]> = {
+	particle: ["step1", "particle-step2", "particle-step3", "complete"],
+	force: ["step1", "force-step2", "force-step3", "complete"],
+	solid: ["step1", "solid-step2", "solid-step3", "complete"],
+	default: ["step1", "complete"],
+}
+
+export const convertStep = (step: SettingStatus): string => {
+	return step.split("-").pop() ?? "";
+}
+
+export const FIRST_STEP = 0
