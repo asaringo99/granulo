@@ -8,7 +8,6 @@
   import { navigate } from "svelte-routing";
 
 	const unsubscribe = settingsState.subscribe((v) => {console.log(v)})
-	console.log(1)
 	let { settingIdx }: { settingIdx: string} = $props();
 	let action: ActionType | undefined = $state();
 
