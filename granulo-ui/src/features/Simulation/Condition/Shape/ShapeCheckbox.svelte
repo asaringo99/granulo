@@ -5,7 +5,7 @@
     import Rectangle from "../../../../component/contents/Rectangle/Rectangle.svelte";
 
     let {name, selected, oncheck} = $props();
-    const items: RadioItemType[] = [
+    const items: RadioItemType<ShapeType>[] = [
         {
             id: `circle-${name}`,
             label: "Circle",
@@ -15,7 +15,7 @@
         {
             id: `rect-${name}`,
             label: "Rectangle",
-            value: "rect",
+            value: "rectangle",
             component: Rectangle
         }
     ]

@@ -6,7 +6,7 @@
     import Solid from "../../../../component/contents/Solid/Solid.svelte";
 
     let {oncheck, selected, name} = $props()
-    const items: RadioItemType[] = [
+    const items: RadioItemType<ActionType>[] = [
         {
             id: `particle-${name}`,
             label: "Particle",
@@ -33,11 +33,5 @@
 </script>
 
 <div class="flex justify-center w-full">
-    <div class="flex-col text-center w-2/3 items-center">
-        <Pulldown label={label}>
-            <div slot="children" class="flex justify-center">
-                <Checkbox {name} {items} {selected} {onclick}/>
-            </div>
-        </Pulldown>
-    </div>
+    <Checkbox {name} {items} {selected} {onclick}/>
 </div>

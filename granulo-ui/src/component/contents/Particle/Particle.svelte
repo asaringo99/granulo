@@ -8,16 +8,16 @@
       opacity: 1;
     }
     20% {
-      transform: translate(200%, -100%) rotate(10deg);
+      transform: translate(300%, -200%) rotate(10deg);
     }
     40% {
-      transform: translate(-160%, 140%) rotate(-15deg);
+      transform: translate(-240%, 210%) rotate(-15deg);
     }
     60% {
-      transform: translate(120%, -180%) rotate(10deg) scale(1.1);
+      transform: translate(180%, -270%) rotate(10deg) scale(1.1);
     }
     80% {
-      transform: translate(-200%, 120%) rotate(-5deg);
+      transform: translate(-300%, 180%) rotate(-5deg);
     }
     100% {
       transform: translate(0, 0) rotate(0deg) scale(1);
@@ -48,7 +48,7 @@
   }
 </style>
 
-<div class="relative w-10 h-10 rounded-full overflow-hidden group">
+<div class="relative w-20 h-20 rounded-full overflow-hidden group">
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>

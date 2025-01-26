@@ -1,13 +1,15 @@
-declare type RadioItemType = {
+type RadioItemValueType = string
+
+declare type RadioItemType<T extends RadioItemValueType> = {
     id: string,
     label: string,
-    value: string,
+    value: T,
     component?: Component
 }
 
-declare type RadioType = {
+declare type RadioType<T extends RadioItemValueType = string> = {
     name: string,
-    items: RadioItemType[],
+    items: RadioItemType<T>[],
     selected: string
     hidden?: boolean,
     onclick?: (e: any) => void,

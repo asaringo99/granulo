@@ -27,7 +27,7 @@ export const routes = {
 		condition: {
 			setting: {
 				screenId: "S_0001",
-				url: () => "/simulation/condition/setting",
+				url: (id?: string) => `/simulation/condition/setting/${id ?? ":id"}`,
 			},
 		},
 		execute: {

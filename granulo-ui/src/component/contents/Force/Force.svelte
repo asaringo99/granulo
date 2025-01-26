@@ -26,6 +26,6 @@
   }
 </style>
 
-<div class="relative w-10 h-10 overflow-hidden">
+<div class="relative w-20 h-20 overflow-hidden">
   <div class="arrow"></div>
 </div>
