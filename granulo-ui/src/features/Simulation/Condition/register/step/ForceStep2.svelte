@@ -38,15 +38,15 @@
 		<div class="w-full p-4 flex justify-center items-center text-xl font-bold">
 			{granuloMessage.conditionSettingCoordinateDescriptionForForceStep2}
 		</div>
-		<InputNumber inputValue={inputValueX} label={"X座標"}/>
-		<InputNumber inputValue={inputValueY} label={"Y座標"}/>
+		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
+		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
 		<!-- <div class="flex justify-center items-center p-8">
 			<hr class="border-gray-300 w-8/12 inline-flex items-center">
 		</div> -->
 		<div class="w-full p-4 flex justify-center items-center text-xl font-bold">
 			{granuloMessage.conditionSettingForceDescriptionForForceStep2}
 		</div>
-		<InputNumber inputValue={inputValueF} label={"外力F"}/>
+		<InputNumber bind:inputValue={inputValueF} label={"外力F"}/>
 		<div class="mt-8 flex justify-center items-center">
 			<Button {onclick}>
 				<div slot="children" class="text-xl font-bold">

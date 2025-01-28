@@ -13,10 +13,7 @@
 	<div class="p-4">
 		<button
 			class="p-1 m-2 text-xl bg-blue-100 cursor-pointer"
-			onclick={() => {
-				console.log(inputValue)
-				inputValue = inputValue - 1
-			}}
+			onclick={() => inputValue--}
 		>
 			-
 		</button>
@@ -29,7 +26,7 @@
 		/>
 		<button
 			class="p-1 m-2 text-xl bg-blue-100 cursor-pointer"
-			onclick={() => inputValue = inputValue + 1}
+			onclick={() => inputValue++}
 		>
 			+
 		</button>
