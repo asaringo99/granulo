@@ -1,19 +1,37 @@
-const forceSetitngDefault: ForceSetting = {
+const forceSettingDefault: ForceSetting = {
 	overall: true,
 	f: 0,
-	gradation: false
+	pos: {
+		x: 0,
+		y: 0,
+	},
+	gradation: false,
+	type: "force",
+	status: {
+		now: "force-step2",
+		progress: "force-step2",
+	},
 }
 
 const particleSettingDefault: ParticleSetting = {
 	overall: false,
 	num: 0,
+	pos: {
+		x: 0,
+		y: 0,
+	},
 	r: 0,
 	m: 0,
 	e: 0,
 	v: {
 		x: 0,
 		y: 0
-	}
+	},
+	type: "particle",
+	status: {
+		now: "particle-step2",
+		progress: "particle-step2",
+	},
 }
 
 const solidSettingDefault: SolidSetting = {
@@ -27,7 +45,12 @@ const solidSettingDefault: SolidSetting = {
 		x: undefined,
 		y: undefined
 	},
-	e: 0
+	e: 0,
+	type: "solid",
+	status: {
+		now: "solid-step2",
+		progress: "solid-step2",
+	},
 }
 
 export function shallowMerge<T extends object, U extends object>(x: T, y: U): T & U {
@@ -36,34 +59,10 @@ export function shallowMerge<T extends object, U extends object>(x: T, y: U): T 
 
 type P<T extends string, K> = { [key in T]: K }
 
-const particleTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
-	type: "particle",
-	status: {
-		now: "particle-step2",
-		progress: "particle-step2",
-	}
-}
-
-const forceTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
-	type: "force",
-	status: {
-		now: "force-step2",
-		progress: "force-step2",
-	}
-}
-
-const solidTp: {type: ActionType, status: {now: SettingStatus, progress: SettingStatus}} = {
-	type: "solid",
-	status: {
-		now: "solid-step2",
-		progress: "solid-step2",
-	}
-}
-
-export const defaulActiontValue: P<ActionType, ActionSetting> = {
-	particle: shallowMerge(particleSettingDefault, particleTp),
-	force: shallowMerge(forceSetitngDefault, forceTp),
-	solid: shallowMerge(solidSettingDefault, solidTp),
+export const defaulActiontValue: P<ActionType, any> = {
+	particle: particleSettingDefault,
+	force: forceSettingDefault,
+	solid: solidSettingDefault,
 }
 
 export const actionSteps: P<ActionType | "default", SettingStatus[]> = {

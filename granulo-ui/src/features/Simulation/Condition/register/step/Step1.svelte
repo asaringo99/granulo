@@ -1,39 +1,47 @@
 <script lang="ts">
-	import { settingsState } from "../../../../../store";
+	import { actionLinkedId, settingsState } from "../../../../../store";
   import { defaulActiontValue } from "../../const";
   import { granuloMessage } from "../../../../../messages";
   import Button from "../../../../../component/button/Button.svelte";
   import { granuloBaseMessage } from "../../../../../messages.base";
   import ActionCheckbox from "../../../../component/ActionCheckbox.svelte";
 
-	let { settingId }: { settingId: string} = $props();
-	let action: ActionType | undefined = $state($settingsState[settingId]?.type ?? undefined);
+	let { settingId }: { settingId: string } = $props();
+	let action: ActionType | undefined = $actionLinkedId[settingId];
+	let selectedAction: ActionType | undefined = $state(action);
 
 	const oncheck = (value: ActionType) => {
-		action = value;
+		selectedAction = value;
   }
 
 	const onclick = () => {
-		if (!action) {
+		if (!selectedAction) {
 			alert("入力してね");
 			return;
 		}
-		let key = Object.keys($settingsState).find((setting) => setting === settingId)
-		if (key && $settingsState[settingId].type === action) {
+		if (Object.keys($settingsState[selectedAction]).includes(settingId)) {
 			alert("同じやーん");
 			return;
 		}
 		settingsState.update((setting) => {
-			let updated = {
-				...setting,
-				[settingId]: defaulActiontValue[action!]
+			const remForce: ActionSetting['force'] = Object.entries(setting['force']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
+			const remParticle: ActionSetting['particle'] = Object.entries(setting['particle']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
+			const remSolid: ActionSetting['solid'] = Object.entries(setting['solid']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
+			return {
+				force: remForce,
+				particle: remParticle,
+				solid: remSolid,
 			}
-			return updated
 		})
+		settingsState.set({
+				...$settingsState,
+				[selectedAction]: {
+					[settingId]: defaulActiontValue[selectedAction],
+				}
+			})
 	}
 
-	let selected = $derived($settingsState[settingId]?.type ?? -1);
-
+	let selected = $derived(action ? $settingsState[action][settingId]?.type : -1);
 </script>
 
 <div class="w-full">
