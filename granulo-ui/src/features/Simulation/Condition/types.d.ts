@@ -38,7 +38,7 @@ declare type ActionSetting = {
 };
 
 declare type ForceType = {
-	overall: boolean,
+	overall: boolean | undefined,
 	pos?: {
 		x: number,
 		y: number,
@@ -48,7 +48,7 @@ declare type ForceType = {
 }
 
 declare type ParticleType = {
-	overall: boolean,
+	overall: boolean | undefined,
 	pos?: {
 		x: number,
 		y: number,

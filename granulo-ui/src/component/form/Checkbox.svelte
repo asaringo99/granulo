@@ -9,9 +9,9 @@
 </script>
 
 <fieldset class="w-full rounded p-2 flex justify-center">
-    <div class="w-1/2 flex justify-around items-center">
+    <div class="w-2/3 flex justify-center items-center">
         {#each items as item, i}
-            <div class="p-4 m-2 hover:bg-blue-300 text-center transition duration-200 rounded-2xl {i === selectedId && "bg-blue-100 border border-gray-500"}">
+            <div class="p-4 m-2 border border-gray-300 hover:bg-blue-400 text-center transition duration-200 rounded-2xl {i === selectedId && "bg-blue-200 border-gray-500"}">
                 <input
                     type="radio"
                     id="{item.id}"

@@ -1,8 +1,8 @@
 <script lang="ts">
     import Checkbox from "../../component/form/Checkbox.svelte";
-    import Force from "../../component/contents/Force/Force.svelte";
-    import Particle from "../../component/contents/Particle/Particle.svelte";
-    import Solid from "../../component/contents/Solid/Solid.svelte";
+    import Force from "../../component/contents/Force.svelte";
+    import Particle from "../../component/contents/Particle.svelte";
+    import Solid from "../../component/contents/Solid.svelte";
 
     let {oncheck, selected, name} = $props()
     const items: RadioItemType<ActionType>[] = [

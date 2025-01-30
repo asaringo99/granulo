@@ -1,5 +1,5 @@
 const forceSettingDefault: ForceSetting = {
-	overall: true,
+	overall: undefined,
 	f: 0,
 	pos: {
 		x: 0,
@@ -14,7 +14,7 @@ const forceSettingDefault: ForceSetting = {
 }
 
 const particleSettingDefault: ParticleSetting = {
-	overall: false,
+	overall: undefined,
 	num: 0,
 	pos: {
 		x: 0,

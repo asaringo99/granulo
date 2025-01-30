@@ -1,8 +1,7 @@
 <script lang="ts">
-    import Checkbox from "../../../../component/form/Checkbox.svelte";
-    import Pulldown from "../../../../component/pulldown/Pulldown.svelte";
-    import Circle from "../../../../component/contents/Circle/Circle.svelte";
-    import Rectangle from "../../../../component/contents/Rectangle/Rectangle.svelte";
+    import Checkbox from "../../component/form/Checkbox.svelte";
+    import Circle from "../../component/contents/Circle.svelte";
+    import Rectangle from "../../component/contents/Rectangle.svelte";
 
     let {name, selected, oncheck} = $props();
     const items: RadioItemType<ShapeType>[] = [
@@ -26,11 +25,5 @@
 </script>
 
 <div class="flex justify-center w-full">
-    <div class="flex-col text-center w-2/3 items-center">
-        <Pulldown label={label}>
-            <div slot="children" class="flex justify-center">
-                <Checkbox {name} {items} {selected} {onclick} />
-            </div>
-        </Pulldown>
-    </div>
+    <Checkbox {name} {items} {selected} {onclick} />
 </div>

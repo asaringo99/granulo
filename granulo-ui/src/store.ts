@@ -1,5 +1,5 @@
 import { writable, readonly, derived, type Writable, type Readable } from "svelte/store";
-import { actionSteps, convertStep, defaulActiontValue } from "./features/simulation/condition/const";
+import { actionSteps } from "./features/simulation/condition/const";
 
 export const settingsState: Writable<ActionSetting> = writable({
 	particle: {},

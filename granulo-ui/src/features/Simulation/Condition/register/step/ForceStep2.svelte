@@ -4,15 +4,25 @@
 	import { granuloMessage } from "../../../../../messages";
   import { granuloBaseMessage } from "../../../../../messages.base";
   import { settingsState } from "../../../../../store";
+  import OverallCheckbox from "../../../../component/OverallCheckbox.svelte";
 
 	let { settingId }: { settingId: string} = $props();
 	let forceSettingState = $settingsState['force'][settingId];
+	let enableOverall: boolean | undefined = $state(forceSettingState.overall);
+	let overall = $derived(enableOverall === undefined ? undefined : enableOverall ? 'overall' : 'spot');
 	let inputValueF = $state(forceSettingState.f ?? 0);
 	let inputValueX = $state(forceSettingState.pos?.x ?? 0);
 	let inputValueY = $state(forceSettingState.pos?.y ?? 0);
 
+	const oncheck = (value: 'overall' | 'spot') => {
+		enableOverall = value === 'overall';
+  }
+
 	const onclick = () => {
-		console.log(inputValueX, inputValueY, inputValueF)
+		if (enableOverall === undefined) {
+			alert("checkして")
+			return;
+		}
 		settingsState.set({
 			...$settingsState,
 			['force']: {
@@ -22,11 +32,16 @@
 						now: 'force-step3',
 						progress: 'force-step3',
 					},
-					pos: {
-						x: inputValueX,
-						y: inputValueY,
-					},
+					overall: enableOverall,
 					f: inputValueF,
+					...(!enableOverall ? {
+						pos: {
+							x: inputValueX,
+							y: inputValueY,
+						}
+					} : {
+						pos: undefined
+					}),
 				}
 			}
 		})
@@ -35,11 +50,21 @@
 
 <div>
 	<div class="w-full">
-		<div class="w-full p-4 flex justify-center items-center text-xl font-bold">
-			{granuloMessage.conditionSettingCoordinateDescriptionForForceStep2}
+		<div class="w-full flex justify-center items-center text-xl font-bold">
+			外力Fを適用するエリアを選択してください
 		</div>
-		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
-		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
+		<OverallCheckbox
+			oncheck={(value: 'overall' | 'spot') => oncheck(value)}
+			selected={overall}
+			name={`action-${settingId}`}
+		/>
+		{#if enableOverall === false}
+			<div class="w-full p-4 flex justify-center items-center text-xl font-bold">
+				{granuloMessage.conditionSettingCoordinateDescriptionForForceStep2}
+			</div>
+			<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
+			<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
+		{/if}
 		<!-- <div class="flex justify-center items-center p-8">
 			<hr class="border-gray-300 w-8/12 inline-flex items-center">
 		</div> -->
