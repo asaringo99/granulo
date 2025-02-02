@@ -1,7 +1,6 @@
 const forceSettingDefault: ForceSetting = {
 	overall: undefined,
-	f: 0,
-	pos: {
+	f: {
 		x: 0,
 		y: 0,
 	},
@@ -11,6 +10,7 @@ const forceSettingDefault: ForceSetting = {
 		now: "force-step2",
 		progress: "force-step2",
 	},
+	pos: undefined
 }
 
 const particleSettingDefault: ParticleSetting = {
@@ -67,7 +67,7 @@ export const defaulActiontValue: P<ActionType, any> = {
 
 export const actionSteps: P<ActionType | "default", SettingStatus[]> = {
 	particle: ["step1", "particle-step2", "particle-step3", "complete"],
-	force: ["step1", "force-step2", "force-step3", "complete"],
+	force: ["step1", "force-step2", "complete"],
 	solid: ["step1", "solid-step2", "solid-step3", "complete"],
 	default: ["step1", "complete"],
 }

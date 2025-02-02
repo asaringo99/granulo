@@ -5,6 +5,7 @@
   import Button from "../../../../../component/button/Button.svelte";
   import { granuloBaseMessage } from "../../../../../messages.base";
   import ActionCheckbox from "../../../../component/ActionCheckbox.svelte";
+  import Typography from "../../../../../component/typography/Typography.svelte";
 
 	let { settingId }: { settingId: string } = $props();
 	let action: ActionType | undefined = $actionLinkedId[settingId];
@@ -45,9 +46,11 @@
 </script>
 
 <div class="w-full">
-	<div class="w-full p-4 flex justify-center items-center text-xl">
-		{granuloMessage.conditionSettingDescriptionForStep1}
-	</div>
+	<Typography
+		label={granuloMessage.conditionSettingDescriptionOnStep1}
+		weight='bold'
+		size='lerge'
+	/>
 	<ActionCheckbox
 			oncheck={(value: ActionType) => oncheck(value)}
 			{selected}
@@ -56,7 +59,7 @@
 	<div class="mt-8 flex justify-center items-center">
 		<Button {onclick}>
 			<div slot="children" class="text-xl font-bold">
-				{granuloBaseMessage.decide}
+				{granuloBaseMessage.next}
 			</div>
 		</Button>
 	</div>

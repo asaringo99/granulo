@@ -2,6 +2,7 @@
   import ProgressBar from "../../../../component/progressbar/ProgressBar.svelte";
   import { actionLinkedId, getStepStatus, readableSettingState, settingsState } from "../../../../store";
   import { actionSteps, convertStep, FIRST_STEP } from "../const";
+  import Complete from "./step/Complete.svelte";
   import ForceStep2 from "./step/ForceStep2.svelte";
   import ForceStep3 from "./step/ForceStep3.svelte";
   import Step1 from "./step/Step1.svelte";
@@ -55,6 +56,7 @@
 	{#if step === 'step1'} <Step1 settingId={id} />
 	{:else if step === 'force-step2'} <ForceStep2 settingId={id} />
 	{:else if step === 'force-step3'} <ForceStep3 />
+	{:else if step === 'complete'} <Complete settingId={id} />
 	{:else}
 		<div>dddddd</div>
 	{/if}

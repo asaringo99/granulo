@@ -43,7 +43,10 @@ declare type ForceType = {
 		x: number,
 		y: number,
 	}
-	f: number,
+	f: {
+		x: number,
+		y: number,
+	}
 	gradation: boolean,
 }
 
