@@ -68,11 +68,14 @@
 		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
 		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
 		{/if}
-	<div class="mt-8 flex justify-center items-center">
-		<Button {onclick}>
-			<div class="text-xl font-bold">
-				{granuloBaseMessage.next}
-			</div>
+		<Container>
+			<Button {onclick}>
+			<Typography
+				p={2}
+				label={granuloBaseMessage.next}
+				weight='bold'
+				size='large'
+			/>
 		</Button>
-	</div>
+	</Container>
 </Container>
