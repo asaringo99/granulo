@@ -1,11 +1,11 @@
 <script lang="ts">
-import Button from "../../../../../component/button/Button.svelte";
-  import InputNumber from "../../../../../component/form/InputNumber.svelte";
-  import Typography from "../../../../../component/typography/Typography.svelte";
-	import { granuloMessage } from "../../../../../messages";
-  import { granuloBaseMessage } from "../../../../../messages.base";
-  import { settingsState } from "../../../../../store";
-  import OverallCheckbox from "../../../../component/OverallCheckbox.svelte";
+import Button from "../../../../../../component/button/Button.svelte";
+  import InputNumber from "../../../../../../component/form/InputNumber.svelte";
+  import Typography from "../../../../../../component/typography/Typography.svelte";
+	import { granuloMessage } from "../../../../../../messages";
+  import { granuloBaseMessage } from "../../../../../../messages.base";
+  import { settingsState } from "../../../../../../store";
+  import OverallCheckbox from "../../../../../component/OverallCheckbox.svelte";
 
 	let { settingId }: { settingId: string} = $props();
 	let forceSettingState = $settingsState['force'][settingId];

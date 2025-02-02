@@ -3,9 +3,8 @@
   import { actionLinkedId, getStepStatus, readableSettingState, settingsState } from "../../../../store";
   import { actionSteps, convertStep, FIRST_STEP } from "../const";
   import Complete from "./step/Complete.svelte";
-  import ForceStep2 from "./step/ForceStep2.svelte";
-  import ForceStep3 from "./step/ForceStep3.svelte";
   import Step1 from "./step/Step1.svelte";
+  import Step2 from "./step/Step2.svelte";
 	
 	let { id }: { id: string } = $props();
 	let action: ActionType | undefined = $actionLinkedId[id];
@@ -56,8 +55,7 @@
 		<ProgressBar stepId={nowStepIdx} progressId={progressStepIdx} steps={steps.map((s) => convertStep(s))} {onclick}/>
 	</div>
 	{#if step === 'step1'} <Step1 settingId={id} />
-	{:else if step === 'force-step2'} <ForceStep2 settingId={id} />
-	{:else if step === 'force-step3'} <ForceStep3 />
+	{:else if step === 'step2'} <Step2 settingId={id} />
 	{:else if step === 'complete'} <Complete settingId={id} />
 	{:else}
 		<div>dddddd</div>

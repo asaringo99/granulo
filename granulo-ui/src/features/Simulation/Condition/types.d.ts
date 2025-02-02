@@ -1,17 +1,9 @@
 enum SettingStatusE {
 	STEP1 = 'step1',
-	FORCE_STEP2 = 'force-step2',
-	FORCE_STEP3 = 'force-step3',
-	FORCE_STEP4 = 'force-step4',
-	FORCE_STEP5 = 'force-step5',
-	PARTICLE_STEP2 = 'particle-step2',
-	PARTICLE_STEP3 = 'particle-step3',
-	PARTICLE_STEP4 = 'particle-step4',
-	PARTICLE_STEP5 = 'particle-step5',
-	SOLID_STEP2 = 'solid-step2',
-	SOLID_STEP3 = 'solid-step3',
-	SOLID_STEP4 = 'solid-step4',
-	SOLID_STEP5 = 'solid-step5',
+	STEP2 = 'step2',
+	STEP2 = 'step3',
+	STEP2 = 'step4',
+	STEP2 = 'step5',
 	COMPLETE = 'complete'
 }
 

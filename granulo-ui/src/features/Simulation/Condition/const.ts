@@ -7,8 +7,8 @@ const forceSettingDefault: ForceSetting = {
 	gradation: false,
 	type: "force",
 	status: {
-		now: "force-step2",
-		progress: "force-step2",
+		now: "step2",
+		progress: "step2",
 	},
 	pos: undefined,
 	commit: false,
@@ -30,8 +30,8 @@ const particleSettingDefault: ParticleSetting = {
 	},
 	type: "particle",
 	status: {
-		now: "particle-step2",
-		progress: "particle-step2",
+		now: "step2",
+		progress: "step2",
 	},
 	commit: false,
 }
@@ -50,8 +50,8 @@ const solidSettingDefault: SolidSetting = {
 	e: 0,
 	type: "solid",
 	status: {
-		now: "solid-step2",
-		progress: "solid-step2",
+		now: "step2",
+		progress: "step2",
 	},
 	commit: false,
 }
@@ -69,9 +69,9 @@ export const defaulActiontValue: P<ActionType, any> = {
 }
 
 export const actionSteps: P<ActionType | "default", SettingStatus[]> = {
-	particle: ["step1", "particle-step2", "particle-step3", "complete"],
-	force: ["step1", "force-step2", "complete"],
-	solid: ["step1", "solid-step2", "solid-step3", "complete"],
+	particle: ["step1", "step2", "step3", "complete"],
+	force: ["step1", "step2", "complete"],
+	solid: ["step1", "step2", "step3", "complete"],
 	default: ["step1", "complete"],
 }
 
