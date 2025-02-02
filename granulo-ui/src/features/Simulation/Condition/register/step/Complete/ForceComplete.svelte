@@ -26,6 +26,7 @@
 		label={granuloMessage.conditionSettingConfirmTextOnComplete}
 		weight='bold'
 		size='large'
+		p={8}
 	/>
 
 	<!-- コンポーネント -->

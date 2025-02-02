@@ -14,6 +14,7 @@
 		let overall = $derived(enableOverall === undefined ? undefined : enableOverall ? 'overall' : 'spot');
 		let inputValueX = $state(forceSettingState.pos?.x ?? 0);
 		let inputValueY = $state(forceSettingState.pos?.y ?? 0);
+		let inputNum = $state(forceSettingState.num ?? 0);
 	
 		const oncheck = (value: 'overall' | 'spot') => {
 			enableOverall = value === 'overall';
@@ -33,6 +34,7 @@
 							now: 'step3',
 							progress: 'step3',
 						},
+						num: inputNum,
 						overall: enableOverall,
 						...(!enableOverall ? {
 							pos: {
@@ -68,14 +70,20 @@
 		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
 		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
 		{/if}
+		<Typography
+			label={granuloMessage.conditionSettingParticleNumberOnParticleStep2}
+			weight='bold'
+			size='large'
+		/>
+		<InputNumber bind:inputValue={inputNum} label={"粒子数"}/>
 		<Container>
 			<Button {onclick}>
-			<Typography
+				<Typography
 				p={2}
 				label={granuloBaseMessage.next}
 				weight='bold'
 				size='large'
-			/>
+				/>
 		</Button>
 	</Container>
 </Container>

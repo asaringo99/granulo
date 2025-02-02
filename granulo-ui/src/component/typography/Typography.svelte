@@ -9,7 +9,7 @@
 	} = $props();
 	const sizeStyle = size === 'small'
 		? "text-sm" : size === 'large'
-		? "text-lg" : null;
+		? "text-xl" : null;
 	const weightStyle = weight === 'thin'
 		? "font-light" : weight === 'bold'
 		? "font-bold" : null;
