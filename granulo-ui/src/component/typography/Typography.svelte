@@ -1,12 +1,12 @@
 <script lang="ts">
 	let { label, size = 'defualt', weight = 'default', position = 'center'}: {
 		label: string,
-		size?: 'defualt' | 'small' | 'lerge',
+		size?: 'defualt' | 'small' | 'large',
 		weight?: 'default' | 'thin' | 'bold',
 		position?: 'center' | 'left' |  'right',
 	} = $props();
 	const sizeStyle = size === 'small'
-		? "text-sm" : size === 'lerge'
+		? "text-sm" : size === 'large'
 		? "text-lg" : null;
 	const weightStyle = weight === 'thin'
 		? "font-light" : weight === 'bold'

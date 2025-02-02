@@ -49,7 +49,7 @@
 	<Typography
 		label={granuloMessage.conditionSettingDescriptionOnStep1}
 		weight='bold'
-		size='lerge'
+		size='large'
 	/>
 	<ActionCheckbox
 			oncheck={(value: ActionType) => oncheck(value)}
