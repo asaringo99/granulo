@@ -35,6 +35,6 @@
         class="flex justify-center items-center w-full h-full transition duration-300 drop-shadow-sm shadow-sm shadow-slate-300 {sizeClass} {colorClass} {shapeClass}"
         {onclick}
     >
-        <slot name="children"></slot>
+        <slot></slot>
     </button>
 </div>

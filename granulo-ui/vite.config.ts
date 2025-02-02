@@ -14,7 +14,6 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [
       "@syntect/wasm",
-      "@smui/*",
     ]
   }
 })

@@ -83,7 +83,7 @@ import Button from "../../../../../component/button/Button.svelte";
 		<InputNumber bind:inputValue={inputValueForceForY} label={"Y方向への力"}/>
 		<div class="mt-8 flex justify-center items-center">
 			<Button {onclick}>
-				<div slot="children" class="text-xl font-bold">
+				<div class="text-xl font-bold">
 					{granuloBaseMessage.next}
 				</div>
 			</Button>

@@ -32,7 +32,7 @@ const message: Record<MessageCode, messageLocale> = {
 		en: "Input external force F on 2D plane selected coordinates",
 	},
 	[MessageCode.CONDITION_SETTING_CONFIRM_TEXT_ON_COMPLETE]: {
-		ja: "入力事項が誤っていないか確認してください",
+		ja: "入力が誤っていないか確認してください",
 		en: "Check if the information entered is correct.",
 	},
 }
