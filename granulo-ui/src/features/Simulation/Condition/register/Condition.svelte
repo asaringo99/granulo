@@ -51,8 +51,10 @@
 	}
 </script>
 
-<div class="w-full">
-	<ProgressBar stepId={nowStepIdx} progressId={progressStepIdx} steps={steps.map((s) => convertStep(s))} {onclick}/>
+<div class="w-full flex flex-col justify-center items-center">
+	<div class="w-5/6">
+		<ProgressBar stepId={nowStepIdx} progressId={progressStepIdx} steps={steps.map((s) => convertStep(s))} {onclick}/>
+	</div>
 	{#if step === 'step1'} <Step1 settingId={id} />
 	{:else if step === 'force-step2'} <ForceStep2 settingId={id} />
 	{:else if step === 'force-step3'} <ForceStep3 />
