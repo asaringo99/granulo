@@ -8,6 +8,17 @@
 
 	let { settingId }: { settingId: string } = $props();
 	let forceAction = $settingsState['force'][settingId];
+	const onclick = () => {
+		settingsState.set({
+			...$settingsState,
+			force: {
+				[settingId]: {
+					...$settingsState['force'][settingId],
+					commit: true,
+				}
+			}
+		})
+	}
 </script>
 
 <Container p={6} kind='col'>
@@ -113,7 +124,7 @@
 		</Container>
 	</Container>
 	<Container p={4}>
-		<Button onclick={()=>{}}>
+		<Button {onclick}>
 			<Typography
 				label={granuloBaseMessage.decide}
 				weight='bold'

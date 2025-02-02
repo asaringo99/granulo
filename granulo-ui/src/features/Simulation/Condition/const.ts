@@ -10,7 +10,8 @@ const forceSettingDefault: ForceSetting = {
 		now: "force-step2",
 		progress: "force-step2",
 	},
-	pos: undefined
+	pos: undefined,
+	commit: false,
 }
 
 const particleSettingDefault: ParticleSetting = {
@@ -32,6 +33,7 @@ const particleSettingDefault: ParticleSetting = {
 		now: "particle-step2",
 		progress: "particle-step2",
 	},
+	commit: false,
 }
 
 const solidSettingDefault: SolidSetting = {
@@ -51,6 +53,7 @@ const solidSettingDefault: SolidSetting = {
 		now: "solid-step2",
 		progress: "solid-step2",
 	},
+	commit: false,
 }
 
 export function shallowMerge<T extends object, U extends object>(x: T, y: U): T & U {
