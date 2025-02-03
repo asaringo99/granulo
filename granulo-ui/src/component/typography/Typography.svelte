@@ -3,13 +3,19 @@
 		label: string,
 		p?: number,
 		m?: number
-		size?: 'defualt' | 'small' | 'large',
+		size?: 'defualt' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9',
 		weight?: 'default' | 'thin' | 'bold',
 		position?: 'center' | 'left' |  'right',
 	} = $props();
-	const sizeStyle = size === 'small'
-		? "text-sm" : size === 'large'
-		? "text-xl" : null;
+	const sizeStyle = size === '1'
+		? "text-xs" : size === '2'
+		? "text-sm" : size === '3'
+		? "text-lg" : size === '4'
+		? "text-xl" : size === '5'
+		? "text-2xl" : size === '6'
+		? "text-3xl" : size === '7'
+		? "text-4xl" : size === '8'
+		? "text-5xl" : size === '9'
 	const weightStyle = weight === 'thin'
 		? "font-light" : weight === 'bold'
 		? "font-bold" : null;

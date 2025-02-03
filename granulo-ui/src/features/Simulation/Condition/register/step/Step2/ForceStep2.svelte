@@ -67,7 +67,7 @@ import Button from "../../../../../../component/button/Button.svelte";
 			<Typography
 				label={granuloMessage.conditionSettingCoordinateDescriptionOnForceStep2}
 				weight='bold'
-				size='large'
+				size=4
 			/>
 			<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
 			<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
@@ -76,7 +76,7 @@ import Button from "../../../../../../component/button/Button.svelte";
 			<Typography
 				label={granuloMessage.conditionSettingForceDescriptionOnForceStep2}
 				weight='bold'
-				size='large'
+				size=4
 			/>
 		</div>
 		<InputNumber bind:inputValue={inputValueForceForX} label={"X方向への力"}/>

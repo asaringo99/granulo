@@ -8,6 +8,8 @@ enum MessageCode {
 	CONDITION_SETTING_APPLYING_PARTICLE_AREA_ON_PARTICLE_STEP2 = "conditionSettingApplyingParticleAreaOnParticleStep2",
 	CONDITION_SETTING_COORDINATE_DESCRIPTION_ON_PARTICLE_STEP2 = "conditionSettingCoordinateDescriptionOnParticleStep2",
 	CONDITION_SETTING_PARTICLE_NUMBER_ON_PARTICLE_STEP2 = "conditionSettingParticleNumberOnParticleStep2",
+	CONDITION_SETTING_MASS_ON_PARTICLE_STEP3 = "conditionSettingMassOnParticleStep3",
+	CONDITION_SETTING_RADIUS_ON_PARTICLE_STEP3 = "conditionSettingRadiusOnParticleStep3",
 
 	// 外力F
 	CONDITION_SETTING_COORDINATE_DESCRIPTION_ON_FORCE_STEP2 = "conditionSettingCoordinateDescriptionOnForceStep2",
@@ -42,6 +44,14 @@ const message: Record<MessageCode, messageLocale> = {
 		ja: "与える粒子数を入力してください",
 		en: "Input a particle number",
 	},
+	[MessageCode.CONDITION_SETTING_MASS_ON_PARTICLE_STEP3]: {
+		ja: "粒子の質量・単位を入力してください",
+		en: "Input a particle number",
+	},
+	[MessageCode.CONDITION_SETTING_RADIUS_ON_PARTICLE_STEP3]: {
+		ja: "粒子の半径を入力してください",
+		en: "Input a particle radius",
+	},
 
 
 	// 外力F
@@ -71,6 +81,8 @@ export const granuloMessage: Record<MessageCode, string> = {
 	// 粒子
 	[MessageCode.CONDITION_SETTING_APPLYING_PARTICLE_AREA_ON_PARTICLE_STEP2]: message.conditionSettingApplyingParticleAreaOnParticleStep2[lang],
 	[MessageCode.CONDITION_SETTING_COORDINATE_DESCRIPTION_ON_PARTICLE_STEP2]: message.conditionSettingCoordinateDescriptionOnParticleStep2[lang],
+	[MessageCode.CONDITION_SETTING_MASS_ON_PARTICLE_STEP3]: message.conditionSettingMassOnParticleStep3[lang],
+	[MessageCode.CONDITION_SETTING_RADIUS_ON_PARTICLE_STEP3]: message.conditionSettingRadiusOnParticleStep3[lang],
 
 	// 外力F
 	[MessageCode.CONDITION_SETTING_COORDINATE_DESCRIPTION_ON_FORCE_STEP2]: message.conditionSettingCoordinateDescriptionOnForceStep2[lang],

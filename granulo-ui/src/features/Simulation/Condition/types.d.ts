@@ -51,7 +51,11 @@ declare type ParticleType = {
 	}
 	num: number // number of particles
 	r: number, // radius
-	m: number, // mass
+	m: {
+		i: number // mass input
+		unit: string, // mass unit
+		g: number // mass gram
+	},
 	e: number, // coefficient of restitution
 	v: { // initial velocity
 		x: number,

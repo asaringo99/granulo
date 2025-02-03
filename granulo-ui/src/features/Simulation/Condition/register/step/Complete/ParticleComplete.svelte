@@ -7,13 +7,13 @@
   import Container from "../../../../../../component/container/Container.svelte";
 
 	let { settingId }: { settingId: string } = $props();
-	let forceAction = $settingsState['force'][settingId];
+	let particleAction = $settingsState['particle'][settingId];
 	const onclick = () => {
 		settingsState.set({
 			...$settingsState,
-			force: {
+			particle: {
 				[settingId]: {
-					...$settingsState['force'][settingId],
+					...$settingsState['particle'][settingId],
 					commit: true,
 				}
 			}
@@ -40,41 +40,7 @@
 			</Container>
 			<Container basis='10/12' kind='col'>
 				<Typography
-					label="外力"
-					weight="bold"
-				/>
-			</Container>
-		</Container>
-	</Container>
-
-	<!-- 外力 -->
-	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
-		<Container p={2}>
-			<Container basis='2/12'>
-				<Typography
-					label="外力F"
-					weight="bold"
-				/>
-			</Container>
-			<Container basis='3/12' kind='col'>
-				<Typography
-				label="X方向"
-				weight="bold"
-				/>
-				<div class="border border-gray-500 w-full"></div>
-				<Typography
-				label="Y方向"
-				weight="bold"
-				/>
-			</Container>
-			<Container basis='7/12' kind='col'>
-				<Typography
-					label="{forceAction.f.x} [kg・m/s^2]"
-					weight="bold"
-				/>
-				<div class="border border-gray-500 w-full"></div>
-				<Typography
-					label="{forceAction.f.y} [kg・m/s^2]"
+					label="粒子"
 					weight="bold"
 				/>
 			</Container>
@@ -90,7 +56,7 @@
 					weight="bold"
 				/>
 			</Container>
-			{#if forceAction.overall === false && forceAction.pos !== undefined}
+			{#if particleAction.overall === false && particleAction.pos !== undefined}
 				<Container basis='3/12' kind='col'>
 					<Typography
 					label="X座標"
@@ -104,12 +70,12 @@
 				</Container>
 				<Container basis='7/12' kind='col'>
 					<Typography
-						label="{forceAction.pos.x} [-]"
+						label="{particleAction.pos.x} [-]"
 						weight="bold"
 					/>
 					<div class="border border-gray-500 w-full"></div>
 					<Typography
-						label="{forceAction.pos.y} [-]"
+						label="{particleAction.pos.y} [-]"
 						weight="bold"
 					/>
 				</Container>
@@ -120,8 +86,61 @@
 						weight="bold"
 					/>
 				</Container>
-				
 			{/if}
+		</Container>
+	</Container>
+	
+	<!-- 粒子数 -->
+	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+		<Container p={2}>
+			<Container basis='2/12'>
+				<Typography
+					label="粒子数"
+					weight="bold"
+				/>
+			</Container>
+			<Container basis='10/12' kind='col'>
+				<Typography
+					label="{particleAction.num} 個"
+					weight="bold"
+				/>
+			</Container>
+		</Container>
+	</Container>
+	
+	<!-- 粒子の質量 -->
+	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+		<Container p={2}>
+			<Container basis='2/12'>
+				<Typography
+					label="質量"
+					weight="bold"
+				/>
+			</Container>
+			<Container basis='10/12' kind='col'>
+				<Typography
+					label="{particleAction.m.i} [{particleAction.m.unit}]"
+					weight="bold"
+				/>
+			</Container>
+		</Container>
+	</Container>
+
+	<!-- 粒子の半径 -->
+	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+		<Container p={2}>
+			<Container basis='2/12'>
+				<Typography
+					label="半径"
+					weight="bold"
+				/>
+			</Container>
+			<Container basis='10/12' kind='col'>
+				<Typography
+					label="{particleAction.r} [-]"
+					weight="bold"
+				/>
+			</Container>
 		</Container>
 	</Container>
 	<Container p={4}>

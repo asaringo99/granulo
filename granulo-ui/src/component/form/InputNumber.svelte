@@ -6,7 +6,7 @@
 	let isFocus = $state(false);
 </script>
 
-<div class="w-full flex justify-center items-center">
+<div class="flex justify-center items-center">
 	<p class="text-xl">
 		{label}
 	</p>

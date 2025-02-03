@@ -5,6 +5,7 @@
   import Complete from "./step/Complete.svelte";
   import Step1 from "./step/Step1.svelte";
   import Step2 from "./step/Step2.svelte";
+  import Step3 from "./step/Step3.svelte";
 	
 	let { id }: { id: string } = $props();
 	let action: ActionType | undefined = $actionLinkedId[id];
@@ -56,6 +57,7 @@
 	</div>
 	{#if step === 'step1'} <Step1 settingId={id} />
 	{:else if step === 'step2'} <Step2 settingId={id} />
+	{:else if step === 'step3'} <Step3 settingId={id} />
 	{:else if step === 'complete'} <Complete settingId={id} />
 	{:else}
 		<div>dddddd</div>

@@ -22,7 +22,11 @@ const particleSettingDefault: ParticleSetting = {
 		y: 0,
 	},
 	r: 0,
-	m: 0,
+	m: {
+		i: 0,
+		unit: '',
+		g: 0,
+	},
 	e: 0,
 	v: {
 		x: 0,

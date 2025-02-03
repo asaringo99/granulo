@@ -9,12 +9,12 @@
 		import OverallCheckbox from "../../../../../component/OverallCheckbox.svelte";
 	
 		let { settingId }: { settingId: string} = $props();
-		let forceSettingState = $settingsState['particle'][settingId];
-		let enableOverall: boolean | undefined = $state(forceSettingState.overall);
+		let particleSettingState = $settingsState['particle'][settingId];
+		let enableOverall: boolean | undefined = $state(particleSettingState.overall);
 		let overall = $derived(enableOverall === undefined ? undefined : enableOverall ? 'overall' : 'spot');
-		let inputValueX = $state(forceSettingState.pos?.x ?? 0);
-		let inputValueY = $state(forceSettingState.pos?.y ?? 0);
-		let inputNum = $state(forceSettingState.num ?? 0);
+		let inputValueX = $state(particleSettingState.pos?.x ?? 0);
+		let inputValueY = $state(particleSettingState.pos?.y ?? 0);
+		let inputNum = $state(particleSettingState.num ?? 0);
 	
 		const oncheck = (value: 'overall' | 'spot') => {
 			enableOverall = value === 'overall';
@@ -53,7 +53,7 @@
 <Container kind='col'>
 	<Typography
 		label={granuloMessage.conditionSettingApplyingParticleAreaOnParticleStep2}
-		size='large'
+		size=4
 		weight='bold'
 	/>
 	<OverallCheckbox
@@ -65,7 +65,7 @@
 		<Typography
 			label={granuloMessage.conditionSettingCoordinateDescriptionOnParticleStep2}
 			weight='bold'
-			size='large'
+			size=4
 		/>
 		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
 		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
@@ -73,7 +73,7 @@
 		<Typography
 			label={granuloMessage.conditionSettingParticleNumberOnParticleStep2}
 			weight='bold'
-			size='large'
+			size=4
 		/>
 		<InputNumber bind:inputValue={inputNum} label={"粒子数"}/>
 		<Container>
@@ -82,7 +82,7 @@
 				p={2}
 				label={granuloBaseMessage.next}
 				weight='bold'
-				size='large'
+				size=4
 				/>
 		</Button>
 	</Container>
