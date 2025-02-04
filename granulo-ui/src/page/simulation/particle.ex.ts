@@ -43,7 +43,7 @@ class CanvasArtifactParticle implements CanvasArtifact {
 		ctx.fill();
 	}
 	getPath(x: number, y: number): string | null {
-		return (x - this.x) * (x - this.x) + (y - this.y) * (y - this.y) <= this.r * this.r ? "/simulation/condition/setting" : null
+		return (x - this.x) * (x - this.x) + (y - this.y) * (y - this.y) <= this.r * this.r ? "/simulation/condition/register" : null
 	}
 }
 

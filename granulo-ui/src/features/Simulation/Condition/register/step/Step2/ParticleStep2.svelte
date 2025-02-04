@@ -5,11 +5,11 @@
 		import Typography from "../../../../../../component/typography/Typography.svelte";
 		import { granuloMessage } from "../../../../../../messages";
 		import { granuloBaseMessage } from "../../../../../../messages.base";
-		import { settingsState } from "../../../../../../store";
+		import { conditionsState } from "../../../../../../store";
 		import OverallCheckbox from "../../../../../component/OverallCheckbox.svelte";
 	
 		let { settingId }: { settingId: string} = $props();
-		let particleSettingState = $settingsState['particle'][settingId];
+		let particleSettingState = $conditionsState['particle'][settingId];
 		let enableOverall: boolean | undefined = $state(particleSettingState.overall);
 		let overall = $derived(enableOverall === undefined ? undefined : enableOverall ? 'overall' : 'spot');
 		let inputValueX = $state(particleSettingState.pos?.x ?? 0);
@@ -25,11 +25,11 @@
 				alert("checkして")
 				return;
 			}
-			settingsState.set({
-				...$settingsState,
+			conditionsState.set({
+				...$conditionsState,
 				['particle']: {
 					[settingId]: {
-						...$settingsState['particle'][settingId],
+						...$conditionsState['particle'][settingId],
 						status: {
 							now: 'step3',
 							progress: 'step3',

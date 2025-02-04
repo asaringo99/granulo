@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { actionLinkedId, settingsState } from "../../../../../store";
+	import { actionLinkedId, conditionsState } from "../../../../../store";
   import { defaulActiontValue } from "../../const";
   import { granuloMessage } from "../../../../../messages";
   import Button from "../../../../../component/button/Button.svelte";
@@ -20,11 +20,11 @@
 			alert("入力してね");
 			return;
 		}
-		if (Object.keys($settingsState[selectedAction]).includes(settingId)) {
+		if (Object.keys($conditionsState[selectedAction]).includes(settingId)) {
 			alert("同じやーん");
 			return;
 		}
-		settingsState.update((setting) => {
+		conditionsState.update((setting) => {
 			const remForce: ActionSetting['force'] = Object.entries(setting['force']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
 			const remParticle: ActionSetting['particle'] = Object.entries(setting['particle']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
 			const remSolid: ActionSetting['solid'] = Object.entries(setting['solid']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
@@ -34,15 +34,15 @@
 				solid: remSolid,
 			}
 		})
-		settingsState.set({
-				...$settingsState,
+		conditionsState.set({
+				...$conditionsState,
 				[selectedAction]: {
 					[settingId]: defaulActiontValue[selectedAction],
 				}
 			})
 	}
 
-	let selected = $derived(action ? $settingsState[action][settingId]?.type : -1);
+	let selected = $derived(action ? $conditionsState[action][settingId]?.type : -1);
 </script>
 
 <div class="w-full">

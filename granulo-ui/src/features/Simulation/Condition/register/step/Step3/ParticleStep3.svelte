@@ -6,10 +6,10 @@
 		import Typography from "../../../../../../component/typography/Typography.svelte";
 		import { granuloMessage } from "../../../../../../messages";
 		import { granuloBaseMessage } from "../../../../../../messages.base";
-		import { settingsState } from "../../../../../../store";
+		import { conditionsState } from "../../../../../../store";
 	
 		let { settingId }: { settingId: string} = $props();
-		let particleSettingState = $settingsState['particle'][settingId];
+		let particleSettingState = $conditionsState['particle'][settingId];
 		let inputMass = $state(particleSettingState.m.i ?? 0);
 		let inputRadius = $state(particleSettingState.r ?? 0);
 		let selectItems = [
@@ -27,11 +27,11 @@
 			if (unit === undefined || selectedUnitValue === undefined) {
 				return;
 			}
-			settingsState.set({
-				...$settingsState,
+			conditionsState.set({
+				...$conditionsState,
 				['particle']: {
 					[settingId]: {
-						...$settingsState['particle'][settingId],
+						...$conditionsState['particle'][settingId],
 						status: {
 							now: 'complete',
 							progress: 'complete',

@@ -4,11 +4,11 @@ import Button from "../../../../../../component/button/Button.svelte";
   import Typography from "../../../../../../component/typography/Typography.svelte";
 	import { granuloMessage } from "../../../../../../messages";
   import { granuloBaseMessage } from "../../../../../../messages.base";
-  import { settingsState } from "../../../../../../store";
+  import { conditionsState } from "../../../../../../store";
   import OverallCheckbox from "../../../../../component/OverallCheckbox.svelte";
 
 	let { settingId }: { settingId: string} = $props();
-	let forceSettingState = $settingsState['force'][settingId];
+	let forceSettingState = $conditionsState['force'][settingId];
 	let enableOverall: boolean | undefined = $state(forceSettingState.overall);
 	let overall = $derived(enableOverall === undefined ? undefined : enableOverall ? 'overall' : 'spot');
 	let inputValueForceForX = $state(forceSettingState.f.x ?? 0);
@@ -25,11 +25,11 @@ import Button from "../../../../../../component/button/Button.svelte";
 			alert("checkして")
 			return;
 		}
-		settingsState.set({
-			...$settingsState,
+		conditionsState.set({
+			...$conditionsState,
 			['force']: {
 				[settingId]: {
-					...$settingsState['force'][settingId],
+					...$conditionsState['force'][settingId],
 					status: {
 						now: 'complete',
 						progress: 'complete',

@@ -3,7 +3,7 @@
 </script>
 
 <Layout>
-    <div slot="children" class="">
+    <div class="">
         <div>home</div>
         <div>home</div>
         <div>home</div>

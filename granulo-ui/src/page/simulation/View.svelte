@@ -5,7 +5,7 @@
 </script>
 
 <Layout>
-	<div slot="children" class="flex justify-center w-full h-full">
+	<div class="flex justify-center w-full h-full">
 			<View target={particleArtifact}/>
 	</div>
 </Layout>

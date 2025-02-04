@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProgressBar from "../../../../component/progressbar/ProgressBar.svelte";
-  import { actionLinkedId, getStepStatus, readableSettingState, settingsState } from "../../../../store";
+  import { actionLinkedId, getStepStatus, readableSettingState, conditionsState } from "../../../../store";
   import { actionSteps, convertStep, FIRST_STEP } from "../const";
   import Complete from "./step/Complete.svelte";
   import Step1 from "./step/Step1.svelte";
@@ -35,13 +35,13 @@
 		if (stepStatus.step.includes(targetStep)) {
 			return;
 		}
-		settingsState.set({
-			...$settingsState,
+		conditionsState.set({
+			...$conditionsState,
 			[action]: {
 				[id]: {
-					...$settingsState[action][id],
+					...$conditionsState[action][id],
 					status: {
-						...$settingsState[action][id].status,
+						...$conditionsState[action][id].status,
 						now: stepStatus.steps.find((s) => s.includes(targetStep)) ?? "step1",
 					},
 				}

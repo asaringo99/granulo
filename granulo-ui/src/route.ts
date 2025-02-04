@@ -16,7 +16,7 @@ export const routes = {
 	user: {
 		top: {
 			screenId: "U_0001",
-			url: () => "/user/fee",
+			url: () => "/user/top",
 		},
 		fee: {
 			screenId: "U_0002",
@@ -25,17 +25,21 @@ export const routes = {
 	},
 	simulation: {
 		condition: {
-			setting: {
+			register: {
 				screenId: "S_0001",
-				url: (id?: string) => `/simulation/condition/setting/${id ?? ":id"}`,
+				url: (id?: string) => `/simulation/condition/register/${id ?? ":id"}`,
+			},
+			view: {
+				screenId: "S_0002",
+				url: (id?: string) => `/simulation/condition/view`,
 			},
 		},
 		execute: {
-			screenId: "S_0002",
+			screenId: "S_0003",
 			url: () => "/simulation/execute",
 		},
 		view: {
-			screenId: "S_0003",
+			screenId: "S_0004",
 			url: () => "/simulation/view",
 		},
 	}

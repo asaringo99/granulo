@@ -1,6 +1,6 @@
 <script lang="ts">
 	let {
-		width = 'full',
+		width = 'w-full',
 		justify = 'center',
 		items = 'center',
 		kind = 'row',
@@ -11,21 +11,21 @@
 		bgColor,
 		borderColor,
 	}: {
-		width?: Size,
+		width?: Width,
 		justify?: Arrange,
 		items?: Extract<Arrange, 'center' | 'stretch' | 'start' | 'end'>,
 		kind?: 'row' | 'col',
 		p?: number,
 		m?: number,
 		border?: Border
-		basis?: Size,
+		basis?: Basis,
 		bgColor?: BackgroundColor,
 		borderColor?: BorderColor,
 	} = $props();
 </script>
 
 <div class="
-	w-{width}
+	{width}
 	flex
 	flex-{kind}
 	justify-{justify}
@@ -33,7 +33,7 @@
 	p-{p}
 	m-{m}
 	{border}
-	{basis && `basis-${basis}`}
+	{basis}
 	{bgColor}
 	{borderColor}
 	"

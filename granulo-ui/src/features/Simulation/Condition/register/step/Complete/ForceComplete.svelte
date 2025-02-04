@@ -1,23 +1,26 @@
 <script lang="ts">
-	import { actionLinkedId, settingsState } from "../../../../../../store";
+	import { conditionsState } from "../../../../../../store";
   import { granuloMessage } from "../../../../../../messages";
   import Button from "../../../../../../component/button/Button.svelte";
   import { granuloBaseMessage } from "../../../../../../messages.base";
   import Typography from "../../../../../../component/typography/Typography.svelte";
   import Container from "../../../../../../component/container/Container.svelte";
+  import { navigate } from "svelte-routing";
+  import { routes } from "../../../../../../route";
 
 	let { settingId }: { settingId: string } = $props();
-	let forceAction = $settingsState['force'][settingId];
+	let forceAction = $conditionsState['force'][settingId];
 	const onclick = () => {
-		settingsState.set({
-			...$settingsState,
+		conditionsState.set({
+			...$conditionsState,
 			force: {
 				[settingId]: {
-					...$settingsState['force'][settingId],
+					...$conditionsState['force'][settingId],
 					commit: true,
 				}
 			}
 		})
+		navigate(routes.simulation.condition.view.url())
 	}
 </script>
 
@@ -30,15 +33,15 @@
 	/>
 
 	<!-- コンポーネント -->
-	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+	<Container width="w-8/12" p={3} border="border-y" borderColor="border-gray-500">
 		<Container p={2}>
-			<Container basis='2/12'>
+			<Container basis='basis-2/12'>
 				<Typography
 					label="作用"
 					weight="bold"
 				/>
 			</Container>
-			<Container basis='10/12' kind='col'>
+			<Container basis='basis-10/12' kind='col'>
 				<Typography
 					label="外力"
 					weight="bold"
@@ -48,15 +51,15 @@
 	</Container>
 
 	<!-- 外力 -->
-	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+	<Container width="w-8/12" p={3} border="border-y" borderColor="border-gray-500">
 		<Container p={2}>
-			<Container basis='2/12'>
+			<Container basis='basis-2/12'>
 				<Typography
 					label="外力F"
 					weight="bold"
 				/>
 			</Container>
-			<Container basis='3/12' kind='col'>
+			<Container basis='basis-3/12' kind='col'>
 				<Typography
 				label="X方向"
 				weight="bold"
@@ -67,7 +70,7 @@
 				weight="bold"
 				/>
 			</Container>
-			<Container basis='7/12' kind='col'>
+			<Container basis='basis-7/12' kind='col'>
 				<Typography
 					label="{forceAction.f.x} [kg・m/s^2]"
 					weight="bold"
@@ -82,16 +85,16 @@
 	</Container>
 
 	<!-- 座標 -->
-	<Container width="8/12" p={3} border="border-y" borderColor="border-gray-500">
+	<Container width="w-8/12" p={3} border="border-y" borderColor="border-gray-500">
 		<Container p={2}>
-			<Container basis='2/12'>
+			<Container basis='basis-2/12'>
 				<Typography
 					label="配置"
 					weight="bold"
 				/>
 			</Container>
 			{#if forceAction.overall === false && forceAction.pos !== undefined}
-				<Container basis='3/12' kind='col'>
+				<Container basis='basis-3/12' kind='col'>
 					<Typography
 					label="X座標"
 					weight="bold"
@@ -102,7 +105,7 @@
 					weight="bold"
 					/>
 				</Container>
-				<Container basis='7/12' kind='col'>
+				<Container basis='basis-7/12' kind='col'>
 					<Typography
 						label="{forceAction.pos.x} [-]"
 						weight="bold"
@@ -114,7 +117,7 @@
 					/>
 				</Container>
 				{:else}
-				<Container basis='10/12' kind='col'>
+				<Container basis='basis-10/12' kind='col'>
 					<Typography
 						label="Overall（全体）"
 						weight="bold"
