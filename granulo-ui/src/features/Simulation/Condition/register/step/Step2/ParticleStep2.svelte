@@ -68,6 +68,12 @@
 			weight='bold'
 			size=4
 		/>
+		<Typography
+			label={granuloMessage.conditionSettingCoordinateDetailDescriptionOnParticleStep2}
+			weight='thin'
+			p={3}
+			size=3
+		/>
 		<InputNumber bind:inputValue={inputValueX} label={"X座標"}/>
 		<InputNumber bind:inputValue={inputValueY} label={"Y座標"}/>
 		{/if}

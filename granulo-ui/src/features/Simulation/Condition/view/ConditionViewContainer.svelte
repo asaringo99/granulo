@@ -16,7 +16,7 @@
 	<Typography
 		label={label} 
 		weight="bold"
-		size='5'
+		size='6'
 	/>
 	{#each conditions as [id, condition], idx}
 
@@ -28,8 +28,9 @@
 				<Container>
 					<Container basis="basis-6/12">
 						<Typography
-							label="{condition.note}"
+							label={condition.note}
 							p={4}
+							weight="bold"
 						/>
 					</Container>
 					<Container basis="basis-6/12">

@@ -1,21 +1,40 @@
-import { writable, readonly, derived, type Writable, type Readable } from "svelte/store";
+import { writable, readonly, derived, type Writable, type Readable, get } from "svelte/store";
 import { actionSteps } from "./features/simulation/condition/const";
 import { merge } from "ts-deepmerge";
 import { AES } from "crypto-ts";
 
-export const conditionsState: Writable<ActionSetting> = writable({
-	particle: {},
+export function storable<T>(value: T) {
+	const store: Writable<T> = writable(value);
+	const { subscribe, set, update } = store;
+	const isBrowser = typeof window !== 'undefined';
+
+	isBrowser && localStorage.granulo &&
+		set(JSON.parse(localStorage.granulo));
+
+	return {
+		subscribe,
+		set: (n: T) => {
+			set(n);
+			isBrowser && (localStorage.granulo = JSON.stringify(n));
+		},
+		update: (callback: (n: T) => T) => {
+			update(callback);
+			const updatedStore = get(store);
+			isBrowser && (localStorage.granulo = JSON.stringify(updatedStore));
+		}
+	}
+}
+
+export const conditionsState = storable<ActionSetting>({
 	force: {},
-	solid: {}
-});
+	particle: {},
+	solid: {},
+})
+
 export const readableSettingState = readonly(conditionsState);
 export const derivedNumbering = derived(conditionsState, ($conditionState) => {
-	let date = {
-		now: Date.now()
-	}
-	const merged = merge($conditionState, date);
-	const aes = AES.encrypt(JSON.stringify(merged), 'granulo-ui-hash')
-	const hash = aes.toString().replaceAll("/","a").replaceAll("?","a")
+	const merged = merge($conditionState, { now: Date.now() });
+	const hash = AES.encrypt(JSON.stringify(merged), 'granulo-ui-hash').toString().replaceAll("/","a").replaceAll("?","a")
 	let numbering = ''
 	for (let i = 0; i < 30; i++) {
 		numbering = numbering.concat(hash[Math.floor(Math.random() * hash.length)])
