@@ -20,20 +20,31 @@
 	/>
 	{#each conditions as [id, condition], idx}
 
-			<Container kind='col'>
-				<Typography
-					label="No.{idx + 1} {condition.commit ? "" : "（入力中の条件）"}"
-					weight={condition.commit ? "default" : "thin"}
-				/>
+			<Container kind='col' width="w-11/12">
 				<Container>
-					<Container basis="basis-6/12">
+					<Container basis="basis-3/12" kind="col">
 						<Typography
-							label={condition.note}
-							p={4}
-							weight="bold"
+							label="No.{idx + 1}"
+							weight={condition.commit ? "default" : "thin"}
+							underline={true}
+						/>
+						<Typography
+							label={condition.commit ? "" : "（入力中の条件）"}
+							weight={condition.commit ? "default" : "thin"}
 						/>
 					</Container>
-					<Container basis="basis-6/12">
+					<Container basis="basis-5/12" kind="col">
+						<Typography
+							label="note"
+							weight="bold"
+							size=4
+							underline={true}
+						/>
+						<Typography
+							label={condition.note}
+						/>
+					</Container>
+					<Container basis="basis-4/12">
 						<Button p={20} onclick={()=>{navigate(routes.simulation.condition.register.url(id))}}>編集<EditIcon /></Button>
 						<Button m={4} color="alert" onclick={()=>{
 							const {[id]: _, ...rest} = $conditionsState[action]

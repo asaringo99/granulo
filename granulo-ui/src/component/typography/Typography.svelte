@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { label, p, m, width, size = 'defualt', weight = 'default', position = 'center'}: {
+	let { label, p, m, width, size = 'defualt', weight = 'default', position = 'center', underline = false}: {
 		label: string,
 		p?: number,
 		m?: number
@@ -7,6 +7,7 @@
 		size?: 'defualt' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9',
 		weight?: 'default' | 'thin' | 'bold',
 		position?: 'center' | 'left' |  'right',
+		underline?: boolean,
 	} = $props();
 	const sizeStyle = size === '1'
 		? "text-xs" : size === '2'
@@ -23,6 +24,7 @@
 	const positionStyle = position === 'left'
 		? "text-left" : position === 'right'
 		? "text-right" : "text-center";
+	const underlineStyle = underline && "underline"
 </script>
 
 <div
@@ -33,6 +35,7 @@
 		{sizeStyle}
 		{weightStyle}
 		{positionStyle}
+		{underlineStyle}
 		"
 	>
 	{label}
