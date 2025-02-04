@@ -31,7 +31,7 @@ export const routes = {
 			},
 			view: {
 				screenId: "S_0002",
-				url: (id?: string) => `/simulation/condition/view`,
+				url: () => "/simulation/condition/view",
 			},
 		},
 		execute: {

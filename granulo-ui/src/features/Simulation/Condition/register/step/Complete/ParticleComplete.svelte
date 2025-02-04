@@ -5,6 +5,8 @@
   import { granuloBaseMessage } from "../../../../../../messages.base";
   import Typography from "../../../../../../component/typography/Typography.svelte";
   import Container from "../../../../../../component/container/Container.svelte";
+  import { navigate } from "svelte-routing";
+  import { routes } from "../../../../../../route";
 
 	let { settingId }: { settingId: string } = $props();
 	let particleAction = $conditionsState['particle'][settingId];
@@ -12,12 +14,14 @@
 		conditionsState.set({
 			...$conditionsState,
 			particle: {
+				...$conditionsState['particle'],
 				[settingId]: {
 					...$conditionsState['particle'][settingId],
 					commit: true,
 				}
 			}
 		})
+		navigate(routes.simulation.condition.view.url());
 	}
 </script>
 

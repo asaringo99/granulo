@@ -1,8 +1,9 @@
 <script lang="ts">
-	let { label, p, m, size = 'defualt', weight = 'default', position = 'center'}: {
+	let { label, p, m, width, size = 'defualt', weight = 'default', position = 'center'}: {
 		label: string,
 		p?: number,
 		m?: number
+		width?: Width,
 		size?: 'defualt' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9',
 		weight?: 'default' | 'thin' | 'bold',
 		position?: 'center' | 'left' |  'right',
@@ -26,9 +27,9 @@
 
 <div
 	class="
-		w-full
-		{p && `p-${p}`}
-		{m && `m-${m}`}
+		{width}
+		p-{p}
+		m-{m}
 		{sizeStyle}
 		{weightStyle}
 		{positionStyle}

@@ -13,8 +13,8 @@
   <Route path={routes.root.url()} component={Home} />
   <Route path={routes.home.top.url()} component={Home} />
   <Route path={routes.simulation.condition.register.url()} let:params><ConditionRegister {params}/></Route>
-  <Route path={routes.simulation.condition.view.url()} component={ConditionView} />
   <Route path={routes.simulation.execute.url()} component={Execute} />
   <Route path={routes.simulation.view.url()} component={View} />
+  <Route path={routes.simulation.condition.view.url()} component={ConditionView} />
   <Route component={Error} />
 </Router>

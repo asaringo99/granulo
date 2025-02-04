@@ -30,6 +30,7 @@
 			conditionsState.set({
 				...$conditionsState,
 				['particle']: {
+					...$conditionsState['particle'],
 					[settingId]: {
 						...$conditionsState['particle'][settingId],
 						status: {

@@ -28,6 +28,7 @@ import Button from "../../../../../../component/button/Button.svelte";
 		conditionsState.set({
 			...$conditionsState,
 			['force']: {
+				...$conditionsState['force'],
 				[settingId]: {
 					...$conditionsState['force'][settingId],
 					status: {

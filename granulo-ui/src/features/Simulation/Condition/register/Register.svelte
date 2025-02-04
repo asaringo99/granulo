@@ -1,7 +1,7 @@
 <script lang="ts">
   import ProgressBar from "../../../../component/progressbar/ProgressBar.svelte";
-  import { actionLinkedId, getStepStatus, readableSettingState, conditionsState } from "../../../../store";
-  import { actionSteps, convertStep, FIRST_STEP } from "../const";
+  import { actionLinkedId, getStepStatus, conditionsState } from "../../../../store";
+  import { convertStep } from "../const";
   import Complete from "./step/Complete.svelte";
   import Step1 from "./step/Step1.svelte";
   import Step2 from "./step/Step2.svelte";
@@ -16,7 +16,6 @@
 	let progressStepIdx = $state(stepStatus.progressStepIdx);
 
 	$effect(() => {
-		console.log(action, id)
 		action = $actionLinkedId[id]
 		const status = $getStepStatus(action, id);
 		steps = status.steps;
@@ -38,6 +37,7 @@
 		conditionsState.set({
 			...$conditionsState,
 			[action]: {
+				...$conditionsState[action],
 				[id]: {
 					...$conditionsState[action][id],
 					status: {

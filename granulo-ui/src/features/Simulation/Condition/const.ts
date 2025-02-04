@@ -11,6 +11,7 @@ const forceSettingDefault: ForceSetting = {
 		progress: "step2",
 	},
 	pos: undefined,
+	note: "",
 	commit: false,
 }
 
@@ -37,6 +38,7 @@ const particleSettingDefault: ParticleSetting = {
 		now: "step2",
 		progress: "step2",
 	},
+	note: "",
 	commit: false,
 }
 
@@ -57,6 +59,7 @@ const solidSettingDefault: SolidSetting = {
 		now: "step2",
 		progress: "step2",
 	},
+	note: "",
 	commit: false,
 }
 

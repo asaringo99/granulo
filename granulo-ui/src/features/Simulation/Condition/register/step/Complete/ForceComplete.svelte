@@ -14,6 +14,7 @@
 		conditionsState.set({
 			...$conditionsState,
 			force: {
+				...$conditionsState['force'],
 				[settingId]: {
 					...$conditionsState['force'][settingId],
 					commit: true,

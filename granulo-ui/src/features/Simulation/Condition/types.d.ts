@@ -21,7 +21,8 @@ declare type CommonSetting = {
 		now: SettingStatus,
 		progress: SettingStatus,
 	},
-	commit: boolean
+	commit: boolean,
+	note?: string,
 }
 
 declare type ActionSetting = {

@@ -6,10 +6,14 @@
   import { granuloBaseMessage } from "../../../../../messages.base";
   import ActionCheckbox from "../../../../component/ActionCheckbox.svelte";
   import Typography from "../../../../../component/typography/Typography.svelte";
+  import Container from "../../../../../component/container/Container.svelte";
+  import InputText from "../../../../../component/form/InputText.svelte";
 
 	let { settingId }: { settingId: string } = $props();
 	let action: ActionType | undefined = $actionLinkedId[settingId];
 	let selectedAction: ActionType | undefined = $state(action);
+	let inputNote: string = $state($conditionsState[action]?.[settingId].note ?? "");
+	let selected = $derived(action ? $conditionsState[action][settingId]?.type : -1);
 
 	const oncheck = (value: ActionType) => {
 		selectedAction = value;
@@ -21,28 +25,43 @@
 			return;
 		}
 		if (Object.keys($conditionsState[selectedAction]).includes(settingId)) {
-			alert("同じやーん");
+			conditionsState.set({
+			...$conditionsState,
+			[selectedAction]: {
+				...$conditionsState[selectedAction],
+				[settingId]: {
+					...$conditionsState[selectedAction][settingId],
+					note: inputNote,
+					status: {
+						...$conditionsState[selectedAction][settingId].status,
+						now: 'step2',
+					}
+				}
+			}
+		})
 			return;
 		}
 		conditionsState.update((setting) => {
-			const remForce: ActionSetting['force'] = Object.entries(setting['force']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
-			const remParticle: ActionSetting['particle'] = Object.entries(setting['particle']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
-			const remSolid: ActionSetting['solid'] = Object.entries(setting['solid']).reduce((pre, [k, v]) => settingId === k ? pre : {...pre, [k]: v}, {});
+			const {[settingId]: _f, ...restForce } = setting['force'];
+			const {[settingId]: _p, ...restParticle } = setting['particle'];
+			const {[settingId]: _r, ...restSolid } = setting['solid'];
 			return {
-				force: remForce,
-				particle: remParticle,
-				solid: remSolid,
+				force: restForce,
+				particle: restParticle,
+				solid: restSolid,
 			}
 		})
 		conditionsState.set({
-				...$conditionsState,
-				[selectedAction]: {
-					[settingId]: defaulActiontValue[selectedAction],
+			...$conditionsState,
+			[selectedAction]: {
+				...$conditionsState[selectedAction],
+				[settingId]: {
+					...defaulActiontValue[selectedAction],
+					note: inputNote,
 				}
-			})
+			}
+		})
 	}
-
-	let selected = $derived(action ? $conditionsState[action][settingId]?.type : -1);
 </script>
 
 <div class="w-full">
@@ -56,6 +75,15 @@
 			{selected}
 			name={`action-${settingId}`}
 	/>
+	<Container kind='col'>
+		<Typography
+			label="（任意）条件に注釈を付けてください"
+			size=3
+			weight='bold'
+			width="w-full"
+		/>
+		<InputText bind:inputValue={inputNote} label="注釈" placeholder="入力してください" maxlength={50} width="w-8/12" />
+	</Container>
 	<div class="mt-8 flex justify-center items-center">
 		<Button {onclick}>
 			<div class="text-xl font-bold">
