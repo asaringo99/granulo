@@ -1,6 +1,7 @@
 <script lang="ts">
 	let {
 		width = 'w-full',
+		height,
 		justify = 'center',
 		items = 'center',
 		kind = 'row',
@@ -10,8 +11,10 @@
 		basis,
 		bgColor,
 		borderColor,
+		rounded,
 	}: {
 		width?: Width,
+		height?: Height,
 		justify?: Arrange,
 		items?: Extract<Arrange, 'center' | 'stretch' | 'start' | 'end'>,
 		kind?: 'row' | 'col',
@@ -21,11 +24,13 @@
 		basis?: Basis,
 		bgColor?: BackgroundColor,
 		borderColor?: BorderColor,
+		rounded?: Rounded
 	} = $props();
 </script>
 
 <div class="
 	{width}
+	{height}
 	flex
 	flex-{kind}
 	justify-{justify}
@@ -36,6 +41,7 @@
 	{basis}
 	{bgColor}
 	{borderColor}
+	{rounded}
 	"
 >
 	<slot></slot>

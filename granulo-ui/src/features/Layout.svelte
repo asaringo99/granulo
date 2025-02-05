@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Header from "../component/header/Header.svelte";
+  import Container from "../component/container/Container.svelte";
+import Header from "../component/header/Header.svelte";
   import { routes } from "../route";
 	let paths = [
 		{url: routes.home.top.url(), label: "home"},
@@ -8,9 +9,9 @@
 	]
 </script>
 
-<div class="w-full h-full">
-	<Header routes={paths}/>
-	<div class="pt-32 p-4">
+<Header routes={paths}/>
+<Container height="h-full">
+	<div class="pt-32 p-4 w-full flex flex-col justify-center items-center">
 		<slot></slot>
 	</div>
-</div>
+</Container>

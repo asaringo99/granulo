@@ -5,15 +5,15 @@
   import Typography from "../../../../component/typography/Typography.svelte";
   import { derivedNumbering } from "../../../../store";
   import { routes } from "../../../../route";
-  import ConditionViewContainer from "./ConditionViewContainer.svelte";
+  import ConditionListContainer from "./ConditionListContainer.svelte";
 </script>
 
 <Container kind='col'>
-  <ConditionViewContainer action='force' label='Force Condition' />
+  <ConditionListContainer action='force' label='Force Condition' />
   <span class="border border-gray-500 w-8/12"></span>
-  <ConditionViewContainer action='particle' label='Particle Condition' />
+  <ConditionListContainer action='particle' label='Particle Condition' />
   <span class="border border-gray-500 w-8/12"></span>
-  <ConditionViewContainer action='solid' label='Solid Condition' />
+  <ConditionListContainer action='solid' label='Solid Condition' />
   <span class="border border-gray-500 w-8/12"></span>
   <Container p={4}>
     <Button onclick={() => navigate(routes.simulation.condition.register.url($derivedNumbering))}>

@@ -1,13 +1,28 @@
 <script lang="ts">
-	let { contents }: { contents: TabType[] } = $props();
+  import Container from "../container/Container.svelte";
+
+	let { contents, selectedIdx = 0 }: { contents: TabType[], selectedIdx: number } = $props();
 </script>
 
-<div class="w-full h-full flex items-center justify-center">
+<Container height="h-full">
+	{#each contents as component, idx}
+		<Container bgColor="bg-amber-100">
+			{#if selectedIdx === idx}
+				<button class="cursor-pointer text-white" onclick={() => selectedIdx = idx}>
+					{component.label}
+				</button>
+			{:else}
+				<button class="cursor-pointer" onclick={() => selectedIdx = idx}>
+					{component.label}
+				</button>
+			{/if}
+		</Container>
+	{/each}
 	<div class="overflow-scroll">
-		{#each contents as {label, component}}
-			<div>
-				d
-			</div>
+		{#each contents as component, idx}
+			{#if selectedIdx === idx}
+				<component.component></component.component>
+			{/if}
 		{/each}
 	</div>
-</div>
+</Container>

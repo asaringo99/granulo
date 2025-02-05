@@ -5,8 +5,8 @@
   import ConditionRegister from "./page/simulation/condition/ConditionRegister.svelte";
   import Execute from "./page/simulation/Execute.svelte";
   import Error from "./page/Error.svelte";
-  import ConditionView from "./page/simulation/condition/ConditionView.svelte";
-  import View from "./page/simulation/View.svelte";
+  import ConditionView from "./page/simulation/condition/ConditionList.svelte";
+  import Preview from "./page/simulation/condition/ConditionPreview.svelte"
 </script>
 
 <Router>
@@ -14,7 +14,7 @@
   <Route path={routes.home.top.url()} component={Home} />
   <Route path={routes.simulation.condition.register.url()} let:params><ConditionRegister {params}/></Route>
   <Route path={routes.simulation.execute.url()} component={Execute} />
-  <Route path={routes.simulation.view.url()} component={View} />
+  <Route path={routes.simulation.condition.preview.url()} component={Preview} />
   <Route path={routes.simulation.condition.view.url()} component={ConditionView} />
   <Route component={Error} />
 </Router>

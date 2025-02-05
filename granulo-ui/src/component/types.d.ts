@@ -19,3 +19,8 @@ declare type TabType = {
     label: string,
     component: Component,
 }
+
+declare type LinkTabType = {
+    label: string,
+    url: string,
+}

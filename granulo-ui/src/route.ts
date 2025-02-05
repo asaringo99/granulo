@@ -31,16 +31,16 @@ export const routes = {
 			},
 			view: {
 				screenId: "S_0002",
-				url: () => "/simulation/condition/view",
+				url: () => "/simulation/condition/list",
+			},
+			preview: {
+				screenId: "S_0004",
+				url: () => "/simulation/condition/preview",
 			},
 		},
 		execute: {
 			screenId: "S_0003",
 			url: () => "/simulation/execute",
-		},
-		view: {
-			screenId: "S_0004",
-			url: () => "/simulation/view",
 		},
 	}
 }

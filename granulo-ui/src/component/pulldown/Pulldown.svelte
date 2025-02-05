@@ -12,6 +12,6 @@
 		</button>
 	</div>
 	{#if isOpen}
-		<slot name="children"></slot>
+		<slot></slot>
 	{/if}
 </div>
