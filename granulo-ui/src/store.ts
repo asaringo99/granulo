@@ -2,6 +2,7 @@ import { writable, readonly, derived, type Writable, type Readable, get } from "
 import { actionSteps } from "./features/simulation/condition/const";
 import { merge } from "ts-deepmerge";
 import { AES } from "crypto-ts";
+import { routes } from "./route";
 
 export function storable<T>(value: T) {
 	const store: Writable<T> = writable(value);
@@ -76,3 +77,49 @@ export const getStepStatus = derived(conditionsState, ($conditionState) => {
 		}
 	}
 });
+
+export const canvasArtifact = derived((conditionsState), ($conditionState) => {
+	return {
+		draw: (ctx: CanvasRenderingContext2D): void => {
+			const w = ctx.canvas.width / 100;
+			const h = ctx.canvas.height / 100;
+			Object.values($conditionState.force).forEach((c) => {
+				if (!c.overall && c.pos !== undefined) {
+					ctx.beginPath()
+					ctx.arc(c.pos.x * w, c.pos.y * h, w, 0, Math.PI * 2);
+					ctx.closePath();
+					ctx.fill();
+				}
+			})
+			Object.values($conditionState.particle).forEach((c) => {
+				if (!c.overall && c.pos !== undefined) {
+					ctx.beginPath()
+					ctx.arc(c.pos.x * w, c.pos.y * h, w * c.r, 0, Math.PI * 2);
+					ctx.closePath();
+					ctx.stroke();
+				}
+			})
+		},
+		getId: (ox: number, oy: number): string | null => {
+			let f = Object.entries($conditionState.force).find(([_, v]) => {
+				if (v.overall || v.pos === undefined) {
+					return false;
+				}
+				return (ox - v.pos.x / 100) * (ox - v.pos.x / 100) + (oy - v.pos.y / 100) * (oy - v.pos.y / 100) <= 0.0001
+			})
+			if (f) {
+				return f[0];
+			}
+			let p = Object.entries($conditionState.particle).find(([_, v]) => {
+				if (v.overall || v.pos === undefined) {
+					return false;
+				}
+				return (ox - v.pos.x / 100) * (ox - v.pos.x / 100) + (oy - v.pos.y / 100) * (oy - v.pos.y / 100) <= 0.0001 * v.r * v.r;
+			})
+			if (p) {
+				return p[0];
+			}
+			return null
+		},
+	}
+})

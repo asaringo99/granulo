@@ -1,23 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
   import { navigate } from 'svelte-routing';
+  import { actionLinkedId, canvasArtifact } from '../../store';
+  import { routes } from '../../route';
 
-	let { target }: { target: CanvasArtifact } = $props()
 	let color = $state('#333');
 
 	// Props
-	let width: number = 600;
-	let height: number = 600;
+	let width: number = window.document.documentElement.clientWidth * 0.9;
+	let height: number = window.document.documentElement.clientHeight * 0.6;
 	let background: string = '#fff';
 	
 	// Canvas/Context
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D;
-	let raf: number;
-
-	// 描画フラグや座標管理用
-	let isDrawing = false;
-	let start: { x: number; y: number } | null = null;
 
 	// Canvas位置補正用
 	let topFixed = 0;
@@ -43,18 +39,17 @@
 		const { top, left } = canvas.getBoundingClientRect();
 		topFixed = top;
 		leftFixed = left;
-		ctx.strokeRect(0, 0, canvas.height, canvas.width)
-		target.draw(ctx);
+		ctx.strokeRect(0, 0, canvas.width, canvas.height)
+		$canvasArtifact.draw(ctx);
 	};
 
 	const onclick = (e: MouseEvent) => {
-		console.log(typeof e)
 		let { clientX, clientY } = e;
 		let offsetX = clientX - leftFixed;
 		let offsetY = clientY - topFixed;
-		let path = target.getPath(offsetX, offsetY);
-		if (path !== null) {
-			navigate(path);
+		let id = $canvasArtifact.getId(offsetX / canvas.width, offsetY / canvas.height);
+		if (id !== null) {
+			navigate(routes.simulation.condition.register.url(id));
 		}
 	}
 

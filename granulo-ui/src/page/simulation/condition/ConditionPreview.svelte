@@ -9,6 +9,6 @@ import Layout from "../../../features/Layout.svelte";
 <Layout>
 	<SimulationTab />
 	<Container height="h-full" width="w-full">
-		<Preview target={particleArtifact}/>
+		<Preview/>
 	</Container>
 </Layout>

@@ -7,5 +7,5 @@ declare interface CanvasDrawer {
 
 declare interface CanvasArtifact {
 	draw(ctx: CanvasRenderingContext2D): void;
-	getPath(x: number, y: number): string | null;
+	url(x: number, y: number): string | null;
 }
